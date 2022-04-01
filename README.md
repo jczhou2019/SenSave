@@ -1,9 +1,9 @@
 # SenSave
 
-Stack used:
+<b>Stack used:</b>
 Python
 
-Python/libraries setup:
+<b>Python/libraries setup:</b>
 1) Install the latest python version.
 2) Install Anaconda.
 3) Navigate to the directory where you cloned the database at.
@@ -13,4 +13,5 @@ Python/libraries setup:
 <b>App used: </b>
 
 Facial recognition: final_face_detection_v3.py
+
 Description: This file uses the python library opencv, to snap a picture using the laptop cam, followed by comparing the captured image and the stored image to see if the photos matched with the database (Using facial_recognition library). Lastly, it will trigger a push notification to our telegram bot to inform the user if the elderly is entering the premises or unknown personel is nearby the premises. Furthermore, if no faces are detected in the snapshot, no action will be taken, to reduce redunctant notification pushed and to save spaces too.
