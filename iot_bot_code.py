@@ -12,10 +12,10 @@ import pandas as pd
 import datetime
 
 
-updater = Updater("5113109308:AAENaQru78uzWvK74dMxdvuNkovU8Q_RH-A",
+updater = Updater("",
 				use_context=True)
-token = "5113109308:AAENaQru78uzWvK74dMxdvuNkovU8Q_RH-A"
-chat_id = "-607935510"
+token = ""
+chat_id = ""
 
 def returnDuration():
     data = pd.read_csv("elderlyHabits.csv")
@@ -98,7 +98,7 @@ def profile(update: Update, context: CallbackContext):
 	religion = "Buddist"
 	update.message.reply_text(
 		f"Name: {name}\nage: {age}\nillness: {','.join(illness)} \nDietary: {','.join(dietary)}\nreligion: {religion}")
-	bot.send_document(chat_id="-607935510", document=open("known_faces/barack.jpg", 'rb'))
+	bot.send_document(chat_id="", document=open("known_faces/barack.jpg", 'rb'))
 
 updater.dispatcher.add_handler(CommandHandler('profile',profile))
 updater.dispatcher.add_handler(CommandHandler('start', bot))
