@@ -9,12 +9,39 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import requests
 import telegram.bot
 import pandas as pd
+import datetime
 
 
-updater = Updater("",
+updater = Updater("5113109308:AAENaQru78uzWvK74dMxdvuNkovU8Q_RH-A",
 				use_context=True)
-token = ""
-chat_id = ""
+token = "5113109308:AAENaQru78uzWvK74dMxdvuNkovU8Q_RH-A"
+chat_id = "-607935510"
+
+def returnDuration():
+    data = pd.read_csv("elderlyHabits.csv")
+    year =int(data["year"].tail(1))
+    month =int(data["month"].tail(1))
+    day =int(data["day"].tail(1))
+    hour =int(data["hour"].tail(1))
+    minute =int(data["minute"].tail(1))
+
+    startTime = datetime.datetime(year, month, day, hour, minute, 0)
+    durationDelta = datetime.datetime.now() - startTime
+    durationDeltaSeconds = durationDelta.total_seconds()
+    duration = round(durationDeltaSeconds/(60),2)
+    #unit = minute
+    return duration
+
+def returnPerson():
+    data = pd.read_csv("ownerVisitor.csv")
+    personCount =int(data["personCount"].tail(1))
+    elderly = data["elderly"].tail(1)
+    return [elderly, personCount]
+
+def returnLocation():
+    data = pd.read_csv("elderlyHabits.csv")
+    location =data["location"].tail(1).item()
+    return location
 
 def help(update: Update, context: CallbackContext):
 	update.message.reply_text("WORKING ON IT!")
@@ -29,15 +56,14 @@ def unknown(update: Update, context: CallbackContext):
 		"Sorry '%s' is not a valid command" % update.message.text)
 
 def unique_visitors(update: Update, context: CallbackContext):
-	df = pd.read_csv("test.csv")
-	number_of_visitors = df[df["unique_visitors"]==1].count()["unique_visitors"]
-	update.message.reply_text(f"This elderly has {int(number_of_visitors)} visitors this month.")
+	number= returnPerson()[1]
+	update.message.reply_text(f"This elderly has {int(number)} visitors this month.")
 
 def where_is_elderly(update: Update, context: CallbackContext):
-	location = "Living Room"
-	duration = 0
+	location = returnLocation()
+	duration = returnDuration()
 	update.message.reply_text(
-		f"Karen is in {location} for {duration} min" % update.message.text)
+		f"Elderly is in {location} for {duration} min")
 
 
 def bot(update: Update, context: CallbackContext) -> None:
@@ -72,7 +98,7 @@ def profile(update: Update, context: CallbackContext):
 	religion = "Buddist"
 	update.message.reply_text(
 		f"Name: {name}\nage: {age}\nillness: {','.join(illness)} \nDietary: {','.join(dietary)}\nreligion: {religion}")
-	bot.send_document(chat_id="", document=open("known_faces/hoching.jpeg", 'rb'))
+	bot.send_document(chat_id="-607935510", document=open("known_faces/barack.jpg", 'rb'))
 
 updater.dispatcher.add_handler(CommandHandler('profile',profile))
 updater.dispatcher.add_handler(CommandHandler('start', bot))
