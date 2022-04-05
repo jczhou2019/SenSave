@@ -8,7 +8,12 @@ Python
 2) Install Anaconda.
 3) Navigate to the directory where you cloned the database at.
 4) Open terminal and type "pip install -r requirements.txt" to install all the dependencies required.
-5) Do note that Cmake and Dlib might be difficult to install for macbook M1 and windows machine. So creating a virtual environment for this project is highly recommended.
+5) Do note that Cmake and Dlib might be difficult to install for macbook M1 and windows machine. So creating a virtual environment for this project is highly recommended. For windows user, please follow the guide in this URL to install dlib: https://medium.com/analytics-vidhya/how-to-install-dlib-library-for-python-in-windows-10-57348ba1117f
+
+<u><b>Apps to launch: </b></u><br>
+There are certain python files needed to be launched at different terminals for it to receive information. <br>
+1) iot_bot_code.py (to initate telegram bot) <br>
+2) main.py (to launch microbits) <br>
 
 <u><b>App used: </b></u>
 
