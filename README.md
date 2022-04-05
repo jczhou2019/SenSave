@@ -17,6 +17,7 @@ There are certain python files needed to be launched at different terminals for 
 
 <b>Extra notes:</b><br>
 1) For telegram bot, please use BotFather to generate unique token and chat ID for the telegram bot. Follow the guide in this URL to generate the data https://sendpulse.com/knowledge-base/chatbot/create-telegram-chatbot
+2) Insert the generated token and chat ID into iot_bot_code.py and main.py file, replace the values with <TOKEN_ID> and <CHAT_ID> found in the source code.
 
 <u><b>App used: </b></u>
 
